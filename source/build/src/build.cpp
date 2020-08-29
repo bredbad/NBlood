@@ -461,6 +461,8 @@ static void reset_default_mapstate(void)
     ang = 1536;
     cursectnum = -1;
 
+    startpos = pos; // bred - fix player start position bug on new map
+
     numsectors = 0;
     numwalls = 0;
 
