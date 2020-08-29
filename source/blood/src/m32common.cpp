@@ -68,9 +68,18 @@ void drawgradient(void)
 {
     int32_t i, col = editorcolors[25];
     videoBeginDrawing();
+
+    // bred - remove gradient fade - START
+    /*
     for (i=ydim-STATUS2DSIZ+16; i<ydim && col>0; i++,col--)
         CLEARLINES2D(i, 1, (col<<24)|(col<<16)|(col<<8)|col);
     CLEARLINES2D(i, ydim-i, 0);
+    */
+    for (i = ydim - STATUS2DSIZ + 16; i < ydim && col > 0; i++, col--)
+        CLEARLINES2D(i, 1, 0);
+    CLEARLINES2D(i, ydim - i, 0);
+    // bred - remove gradient fade - END
+
     videoEndDrawing();
 }
 
