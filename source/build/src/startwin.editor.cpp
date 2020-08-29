@@ -68,11 +68,23 @@ static void PopulateForm(void)
     {
         if (validmode[i].fs != settings.fullscreen) continue;
 
+        // bred - for now, only software mode is used for 3d - START
         // all modes get added to the 3D mode list
+        /*
         Bsprintf(buf, "%dx%d %s", validmode[i].xdim, validmode[i].ydim, validmode[i].bpp == 8 ? "software" : "OpenGL");
         j = ComboBox_AddString(hwnd3d, buf);
         (void)ComboBox_SetItemData(hwnd3d, j, i);
         if (i == mode3d)(void)ComboBox_SetCurSel(hwnd3d, j);
+        */
+        if (validmode[i].bpp != 8 || validmode[i].xdim < 640 || validmode[i].ydim < 480)
+            continue;
+        Bsprintf(buf, "%d x %d", validmode[i].xdim, validmode[i].ydim);
+        j = ComboBox_AddString(hwnd3d, buf);
+        (void)ComboBox_SetItemData(hwnd3d, j, i);
+        if (i == mode3d)
+            (void)ComboBox_SetCurSel(hwnd3d, j);
+        // bred - for now, only software mode is used for 3d - END
+
 
         // only 8-bit modes get used for 2D
         if (validmode[i].bpp != 8 || validmode[i].xdim < 640 || validmode[i].ydim < 480) continue;

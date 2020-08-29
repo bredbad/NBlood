@@ -396,10 +396,16 @@ static FORCE_INLINE const int8_t *getpsky(int32_t picnum, int32_t *dapyscale, in
 {
     psky_t const * const psky = &multipsky[getpskyidx(picnum)];
 
+    // bred - fix override errors in mapedit - START
+    int16_t skybits = pskybits_override;
+    int16_t parayscale = parallaxyscale_override;
+
     if (dapskybits)
-        *dapskybits = (pskybits_override == -1 ? psky->lognumtiles : pskybits_override);
+        *dapskybits = (skybits == -1 ? psky->lognumtiles : skybits);
     if (dapyscale)
-        *dapyscale = (parallaxyscale_override == 0 ? psky->horizfrac : parallaxyscale_override);
+        *dapyscale = (parayscale == 0 ? psky->horizfrac : parayscale);
+    // bred - fix override errors in mapedit - END
+
     if (dapyoffs)
         *dapyoffs = psky->yoffs + parallaxyoffs_override;
     if (daptileyscale)

@@ -825,6 +825,8 @@ int app_main(int argc, char const * const * argv)
     keySetCallback(&m32_keypresscallback);
     M32_OnShowOSD(0);  // make sure the desktop's mouse cursor is hidden
 
+    SaveBoard(boardfilename, 1); // bred - finally fixed the parallax then crash bug on newly made maps
+
     if (cursectnum == -1)
     {
         vid_gamma_3d = g_videoGamma;
@@ -3670,7 +3672,7 @@ void overheadeditor(void)
             printmessage16("Uses BUILD technology by Ken Silverman.");
         else if (totalclock < 120*6)
         {
-            printmessage16("Press F1 for help.  This is a test release; always keep backups of your maps.");
+            printmessage16("This is a test release; always keep backups of your maps."); // bred - the helpfile doesn't work anymore
             //        printext16(8L,ydim-STATUS2DSIZ+32L,editorcolors[9],-1,kensig,0);
         }
 
@@ -7663,6 +7665,11 @@ check_next_sector: ;
                                 int32_t rhsnew1stwall = sector[numsectors-2].wallptr;
                                 int32_t lhsotherwall = wall[rhsnew1stwall].nextwall;
 
+                                // bred - fix lhsotherwall >= 0 bug - START
+                                if (lhsotherwall >= 0)
+                                    return;
+                                // bred - fix lhsotherwall >= 0 bug - END
+
                                 Bassert(lhsotherwall >= 0);
 
                                 setfirstwall(numsectors-2, lastwall(rhsnew1stwall));
@@ -9297,8 +9304,16 @@ static void clearministatbar16(void)
     for (i=ydim-STATUS2DSIZ2; i<ydim; i+=2)
     {
 //        drawline256(0, i<<12, xdim<<12, i<<12, col);
+
+        // bred - remove ministatusbar fade - START
+        /*
         CLEARLINES2D(i, 1, (col<<24)|(col<<16)|(col<<8)|col);
         CLEARLINES2D(i+1, 1, (col<<24)|(col<<16)|(col<<8)|col);
+        */
+        CLEARLINES2D(i, 1, 0);
+        CLEARLINES2D(i + 1, 1, 0);
+        // bred - remove ministatusbar fade - END
+
         col--;
         if (col <= 0) break;
     }

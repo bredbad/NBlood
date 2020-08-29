@@ -120,3 +120,5 @@ project.xcworkspace/
 /platform/Windows/*.cfg_orig
 /platform/Windows/*.DEM
 /platform/Windows/*.DEM_
+
+/bin/

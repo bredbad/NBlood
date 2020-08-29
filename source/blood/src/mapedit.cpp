@@ -9472,11 +9472,15 @@ static void Keys2d(void)
 
     if (PRESSED_KEYSC(F1) || (keystatus[KEYSC_QUOTE] && keystatus[KEYSC_TILDE])) //F1 or ' ~
     {
+        // bred - the helpfile doesn't work anymore - START
+        /*
         // PK_
         if (numhelppages>0)
             IntegratedHelp();
         else
             printmessage16("m32help.hlp invalid or not found!");
+        */
+        // bred - the helpfile doesn't work anymore - END
     }
 
     // NUKE-TODO:
