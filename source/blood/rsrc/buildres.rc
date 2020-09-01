@@ -3,7 +3,7 @@
 #include "../../build/include/startwin.editor.h"
 
 RSRC_ICON ICON "game_icon.ico" // bred - remove mapster32 mentions, im sorry!!
-RSRC_BMP BITMAP "cursedsplash.bmp" // bred - add custom cursed splash to nmapedit
+RSRC_BMP BITMAP "cursedsplash.bmp" // bred - replace nmapedit mentions
 
 WIN_STARTWIN DIALOGEX DISCARDABLE  20, 40, 260, 200
 STYLE DS_MODALFRAME | DS_CENTER | DS_SETFONT | DS_FIXEDSYS | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
@@ -53,13 +53,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "NMapedit for NBlood" // bred - remove mapster32 mentions, im sorry!!
+            VALUE "FileDescription", "BloodEdit" // bred - replace nmapedit mentions
             VALUE "FileVersion", STRFILEVER
-            VALUE "InternalName", "NMapedit" // bred - remove mapster32 mentions, im sorry!!
+            VALUE "InternalName", "BloodEdit" // bred - replace nmapedit mentions
             VALUE "LegalCopyright", "Copyright © 2018 EDuke32 Developers, 1996, 2003 3D Realms Entertainment"
             VALUE "LegalTrademarks", "Duke Nukem® is a Registered Trademark of Gearbox Software, LLC."
-            VALUE "OriginalFilename", "nmapedit.exe" // bred - remove mapster32 mentions, im sorry!!
-            VALUE "ProductName", "NMapedit" // bred - remove mapster32 mentions, im sorry!!
+            VALUE "OriginalFilename", "bloodedit.exe" // bred - replace nmapedit mentions
+            VALUE "ProductName", "BloodEdit" // bred - remove mapster32 mentions, im sorry!!
             VALUE "ProductVersion", STRPRODUCTVER
         END
     END

@@ -74,8 +74,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # undef stat
 #endif
 
-const char* AppProperName = "NMapedit";
-const char* AppTechnicalName = "nmapedit";
+const char* AppProperName = "BloodEdit"; // bred - replace nmapedit mentions
+const char* AppTechnicalName = "bloodedit"; // bred - replace nmapedit mentions
 
 #if defined(_WIN32)
 #define DEFAULT_GAME_EXEC "nblood.exe"
@@ -350,7 +350,7 @@ static const char *SPRDSPMODE[MAXNOSPRITES]=
 #define MAXHELP3D (signed)ARRAY_SIZE(Help3d)
 static const char *Help3d[]=
 {
-    "NMapedit 3D mode help",
+    "BloodEdit 3D mode help", // bred - replace nmapedit mentions
     " ",
     " F2 = TOGGLE CLIPBOARD",
     " F3 = TOGGLE MOUSELOOK",
@@ -10138,7 +10138,7 @@ int32_t ExtPreSaveMap(void)
 
 static void G_ShowParameterHelp(void)
 {
-    const char *s = "Usage: nmapedit [files] [options]\n\n"
+    const char *s = "Usage: bloodedit [files] [options]\n\n" // bred - replace nmapedit mentions
               "-g [file.grp], -grp [file.grp]\tLoad extra group file\n"
               "-h [file.def]\t\tLoad an alternate definitions file\n"
               "-x [game.con]\t\tLoad a custom CON script for getting sound definitions\n"
@@ -10159,7 +10159,7 @@ static void G_ShowParameterHelp(void)
               "-usecwd\t\t\tRead game data and configuration file from working directory\n"
               "\n-?, -help, --help\t\tDisplay this help message and exit"
               ;
-    Bsprintf(tempbuf, "NMapedit %s", s_buildRev);
+    Bsprintf(tempbuf, "BloodEdit %s", s_buildRev); // bred - replace nmapedit mentions
     wm_msgbox(tempbuf, "%s", s);
 }
 
@@ -10574,9 +10574,11 @@ int32_t ExtPreInit(int32_t argc,char const * const * argv)
 
     G_ExtPreInit(argc, argv);
 
-    OSD_SetLogFile("nmapedit.log");
-    OSD_SetVersion("NMapedit",0,2);
-    initprintf("NMapedit %s\n", s_buildRev);
+    // bred - replace nmapedit mentions - START
+    OSD_SetLogFile("bloodedit.log");
+    OSD_SetVersion("BloodEdit",0,2);
+    initprintf("BloodEdit %s\n", s_buildRev);
+    // bred - replace nmapedit mentions - END
     PrintBuildInfo();
 
     G_CheckCommandLine(argc,argv);
@@ -11892,7 +11894,7 @@ int32_t ExtInit(void)
     getmessageleng = 0;
     getmessagetimeoff = 0;
 
-    Bsprintf(apptitle, "NMapedit %s", s_buildRev);
+    Bsprintf(apptitle, "BloodEdit %s", s_buildRev); // bred - replace nmapedit mentions
     autosavetimer = (int)totalclock+120*autosave;
 
     registerosdcommands();
@@ -11900,8 +11902,8 @@ int32_t ExtInit(void)
     {
         char *ptr = Xstrdup(setupfilename), *p = strtok(ptr,".");
         if (!Bstrcmp(setupfilename, SETUPFILENAME))
-            Bsprintf(tempbuf, "m32_settings.cfg");
-        else Bsprintf(tempbuf,"%s_m32_settings.cfg",p);
+            Bsprintf(tempbuf, "bloodedit_settings.cfg"); // bred - replace nmapedit mentions
+        else Bsprintf(tempbuf,"%s_bloodedit_settings.cfg",p); // bred - replace nmapedit mentions
         OSD_Exec(tempbuf);
         Xfree(ptr);
     }
